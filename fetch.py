@@ -21,9 +21,9 @@ if platform.system() == "Linux":
 
 elif platform.system() == "Darwin":
     distro = 'MacOS'
-    if Path('/opt/homebrew/Cellar') or Path('/usr/local/Cellar') == True:
+    if Path('/opt/homebrew/Cellar').exists() or Path('/usr/local/Cellar').exists() == True:
         pkgs == subprocess.getoutput('ls -1 $(brew --cellar) | wc -l')
-    elif Path('/opt/homebrew/Cellar') and Path('/usr/local/Cellar') == False:
+    elif Path('/opt/homebrew/Cellar').exists() and Path('/usr/local/Cellar').exists() == False:
         pkgs = "no"
 
 kernel = subprocess.getoutput('uname -r')
